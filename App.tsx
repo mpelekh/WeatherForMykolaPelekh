@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import {SafeAreaView, View, Text, StatusBar, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 import {styles} from './styles';
@@ -57,7 +57,23 @@ const App = () => {
             </View>
           </View>
 
-          <View style={styles.nextDaysWeatherSection} />
+          <View style={styles.nextDaysWeatherSection}>
+            <FlatList
+              data={[1, 2, 3, 4, 5]}
+              horizontal={true}
+              renderItem={() => (
+                <View style={styles.nextDayForecastView}>
+                  <Text style={styles.nextDayForecastDayText}>WED</Text>
+                  <Icon
+                    style={styles.nextDayForecastWeatherIcon}
+                    name="day-rain"
+                  />
+                  <Text style={styles.nextDayForecastDateText}>3 / 14</Text>
+                </View>
+              )}
+              keyExtractor={(item) => item.toString()}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </>
@@ -65,47 +81,3 @@ const App = () => {
 };
 
 export default App;
-
-// const App = () => {
-//   return (
-//     <>
-//       <StatusBar barStyle="dark-content" />
-//       <SafeAreaView>
-//         <ScrollView
-//           contentInsetAdjustmentBehavior="automatic"
-//           style={styles.scrollView}>
-//           {/* <Header /> */}
-//           <ReduxPoc />
-//           <View style={styles.body}>
-//             <View style={styles.sectionContainer}>
-//               <Text style={styles.sectionTitle}>Step One</Text>
-//               <Text style={styles.sectionDescription}>
-//                 Edit <Text style={styles.highlight}>App.tsx</Text> to change
-//                 this screen and then come back to see your edits.
-//               </Text>
-//             </View>
-//             <View style={styles.sectionContainer}>
-//               <Text style={styles.sectionTitle}>See Your Changes</Text>
-//               <Text style={styles.sectionDescription}>
-//                 <ReloadInstructions />
-//               </Text>
-//             </View>
-//             <View style={styles.sectionContainer}>
-//               <Text style={styles.sectionTitle}>Debug</Text>
-//               <Text style={styles.sectionDescription}>
-//                 <DebugInstructions />
-//               </Text>
-//             </View>
-//             <View style={styles.sectionContainer}>
-//               <Text style={styles.sectionTitle}>Learn More</Text>
-//               <Text style={styles.sectionDescription}>
-//                 Read the docs to discover what to do next:
-//               </Text>
-//             </View>
-//             <LearnMoreLinks />
-//           </View>
-//         </ScrollView>
-//       </SafeAreaView>
-//     </>
-//   );
-// };
