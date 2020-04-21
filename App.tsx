@@ -28,7 +28,10 @@ const App = () => {
                   <Text style={styles.cityNameText}>San Francisco</Text>
                 </View>
                 <View style={styles.cityNameIconPosition}>
-                  <Text style={styles.cityNameIconText}>=</Text>
+                  <Icon
+                    style={styles.cityNameIconText}
+                    name="nav-icon-list-a"
+                  />
                 </View>
               </View>
               <View style={styles.section}>
@@ -43,7 +46,7 @@ const App = () => {
                 <View style={styles.timeView}>
                   <Text style={styles.timeText}>3:22 PM</Text>
                 </View>
-                <View style={styles.wetherView}>
+                <View style={styles.weatherView}>
                   <Icon style={styles.weatherViewIcon} name="day-sunny" />
                   <Text style={styles.weatherViewText}>Sunny</Text>
                 </View>

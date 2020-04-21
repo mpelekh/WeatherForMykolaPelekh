@@ -38,6 +38,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.azure,
   },
   section: {
+    alignItems: 'baseline',
     flexDirection: 'row',
     paddingLeft: 25,
     paddingRight: 25,
@@ -56,38 +57,38 @@ export const styles = StyleSheet.create({
   },
   cityNameIconText: {
     color: COLORS.white,
-    fontSize: 32,
+    fontSize: 18,
   },
   timeView: {
     backgroundColor: COLORS.lighterAzure,
     borderRadius: 15,
-    height: 20,
+    height: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 70,
+    width: 80,
   },
   timeText: {
     color: COLORS.white,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   temperatureValueText: {
     color: COLORS.white,
-    fontSize: 56,
-    fontWeight: 'bold',
+    fontSize: 64,
   },
-  wetherView: {
+  weatherView: {
     alignItems: 'center',
+    marginBottom: -40,
   },
   weatherViewIcon: {
     color: COLORS.white,
     fontSize: 64,
   },
   weatherViewText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 24,
     marginTop: 10,
-  }
+  },
 
   // scrollView: {
   //   backgroundColor: Colors.lighter,
