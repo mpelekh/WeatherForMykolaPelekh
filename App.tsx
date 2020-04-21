@@ -20,19 +20,23 @@ const App = () => {
       <SafeAreaView style={styles.safeAreaViewTop} />
       <SafeAreaView style={styles.safeAreaViewBottom}>
         <View style={styles.container}>
-          <View style={styles.sectionTitle}>
-            <View>
-              <Text style={styles.cityNameText}>San Francisco</Text>
+          <View style={styles.mainSection}>
+            <View style={styles.section}>
+              <View>
+                <Text style={styles.cityNameText}>San Francisco</Text>
+              </View>
+              <View style={styles.cityNameIconPosition}>
+                <Text style={styles.cityNameIconText}>=</Text>
+              </View>
             </View>
-            <View style={styles.cityNameIconPosition}>
-              <Text style={styles.cityNameIconText}>=</Text>
+            <View style={styles.section}>
+              <View>
+                <Text style={styles.dayNameText}>Tuesday</Text>
+              </View>
             </View>
           </View>
-          <View style={styles.sectionTitle}>
-            <View>
-              <Text style={styles.dayNameText}>Tuesday</Text>
-            </View>
-          </View>
+
+          <View style={styles.nextDaysWeatherSection} />
         </View>
       </SafeAreaView>
     </>

@@ -1,24 +1,32 @@
 import {StyleSheet} from 'react-native';
 
 const COLORS = {
-  lightBlue: '#1da9ec',
+  lightAzure: '#22b7f3',
+  azure: '#209ce2',
   white: '#ffffff',
 };
 
 export const styles = StyleSheet.create({
   safeAreaViewTop: {
     flex: 0,
-    backgroundColor: COLORS.lightBlue,
+    backgroundColor: COLORS.lightAzure,
   },
   safeAreaViewBottom: {
     flex: 1,
-    backgroundColor: COLORS.lightBlue,
+    backgroundColor: COLORS.azure,
   },
   container: {
     flex: 1,
-    backgroundColor: COLORS.lightBlue,
   },
-  sectionTitle: {
+  mainSection: {
+    flex: 0.8,
+    backgroundColor: COLORS.lightAzure,
+  },
+  nextDaysWeatherSection: {
+    flex: 0.2,
+    backgroundColor: COLORS.azure,
+  },
+  section: {
     flexDirection: 'row',
     paddingLeft: 25,
     paddingRight: 25,
