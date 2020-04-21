@@ -7,11 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clear": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-* && watchman watch-del-all && npm cache clean --force && npm cache verify && rm -rf ios/build && rm -rf android/app/build && rm -rf ~/Library/Developer/Xcode/DerivedData && rm -rf node_modules/ && npm i"
   },
   "dependencies": {
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5"
   },
@@ -21,6 +23,7 @@
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.62.0",
+    "@types/react-native-vector-icons": "^6.4.5",
     "@types/react-redux": "^7.1.7",
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",

@@ -76,6 +76,18 @@ export const styles = StyleSheet.create({
     fontSize: 56,
     fontWeight: 'bold',
   },
+  wetherView: {
+    alignItems: 'center',
+  },
+  weatherViewIcon: {
+    color: COLORS.white,
+    fontSize: 64,
+  },
+  weatherViewText: {
+    color: '#fff',
+    fontSize: 24,
+    marginTop: 10,
+  }
 
   // scrollView: {
   //   backgroundColor: Colors.lighter,

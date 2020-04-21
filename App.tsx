@@ -10,6 +10,7 @@
 
 import React from 'react';
 import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import Icon from 'react-native-vector-icons/Fontisto';
 
 import {styles} from './styles';
 
@@ -41,6 +42,10 @@ const App = () => {
               <View style={{...styles.section, ...styles.currentWeatherView}}>
                 <View style={styles.timeView}>
                   <Text style={styles.timeText}>3:22 PM</Text>
+                </View>
+                <View style={styles.wetherView}>
+                  <Icon style={styles.weatherViewIcon} name="day-sunny" />
+                  <Text style={styles.weatherViewText}>Sunny</Text>
                 </View>
                 <View>
                   <Text style={styles.temperatureValueText}>14&#176;</Text>
