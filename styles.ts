@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const COLORS = {
   lightAzure: '#22b7f3',
+  lighterAzure: '#60c1f3',
   azure: '#209ce2',
   white: '#ffffff',
 };
@@ -21,6 +22,16 @@ export const styles = StyleSheet.create({
   mainSection: {
     flex: 0.8,
     backgroundColor: COLORS.lightAzure,
+  },
+  mainSectionCityAndDayInfo: {
+    flex: 0.45,
+  },
+  mainSectionCurrentWeatherInfo: {
+    flex: 0.55,
+  },
+  currentWeatherView: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   nextDaysWeatherSection: {
     flex: 0.2,
@@ -46,6 +57,24 @@ export const styles = StyleSheet.create({
   cityNameIconText: {
     color: COLORS.white,
     fontSize: 32,
+  },
+  timeView: {
+    backgroundColor: COLORS.lighterAzure,
+    borderRadius: 15,
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 70,
+  },
+  timeText: {
+    color: COLORS.white,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  temperatureValueText: {
+    color: COLORS.white,
+    fontSize: 56,
+    fontWeight: 'bold',
   },
 
   // scrollView: {

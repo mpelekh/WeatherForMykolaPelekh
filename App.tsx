@@ -21,17 +21,30 @@ const App = () => {
       <SafeAreaView style={styles.safeAreaViewBottom}>
         <View style={styles.container}>
           <View style={styles.mainSection}>
-            <View style={styles.section}>
-              <View>
-                <Text style={styles.cityNameText}>San Francisco</Text>
+            <View style={styles.mainSectionCityAndDayInfo}>
+              <View style={styles.section}>
+                <View>
+                  <Text style={styles.cityNameText}>San Francisco</Text>
+                </View>
+                <View style={styles.cityNameIconPosition}>
+                  <Text style={styles.cityNameIconText}>=</Text>
+                </View>
               </View>
-              <View style={styles.cityNameIconPosition}>
-                <Text style={styles.cityNameIconText}>=</Text>
+              <View style={styles.section}>
+                <View>
+                  <Text style={styles.dayNameText}>Tuesday</Text>
+                </View>
               </View>
             </View>
-            <View style={styles.section}>
-              <View>
-                <Text style={styles.dayNameText}>Tuesday</Text>
+
+            <View style={styles.mainSectionCurrentWeatherInfo}>
+              <View style={{...styles.section, ...styles.currentWeatherView}}>
+                <View style={styles.timeView}>
+                  <Text style={styles.timeText}>3:22 PM</Text>
+                </View>
+                <View>
+                  <Text style={styles.temperatureValueText}>14&#176;</Text>
+                </View>
               </View>
             </View>
           </View>
