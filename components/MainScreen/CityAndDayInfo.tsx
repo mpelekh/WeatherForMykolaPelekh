@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import {UIThemeContext} from '../contexts/ui-theme-context';
+import {UIThemeContext} from '../../contexts/ui-theme-context';
 
 type CityAndDayInfoProps = {
   city: string;

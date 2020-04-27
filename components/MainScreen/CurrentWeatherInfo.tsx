@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {View} from 'react-native';
-import {UIThemeContext} from '../contexts/ui-theme-context';
+import {UIThemeContext} from '../../contexts/ui-theme-context';
 import {CurrentTime} from './CurrentTime';
 import {CurrentWeather} from './CurrentWeather';
 import {CurrentTemperature} from './CurrentTemperature';

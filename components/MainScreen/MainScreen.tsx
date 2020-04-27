@@ -2,13 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 import {SafeAreaView, View, StatusBar, FlatList} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import moment from 'moment';
-import {UIThemeContext} from '../contexts/ui-theme-context';
+import {UIThemeContext} from '../../contexts/ui-theme-context';
 import {CityAndDayInfo} from './CityAndDayInfo';
 import {CurrentWeatherInfo} from './CurrentWeatherInfo';
 import {NextDayWeather} from './NextDayWeather';
-import {fetchWeather} from '../services/weather-service';
-import ICONS, {DEFAULT_ICON} from '../utils/icons';
-import config from '../config/app-config';
+import {fetchWeather} from '../../services/weather-service';
+import ICONS, {DEFAULT_ICON} from '../../utils/icons';
+import config from '../../config/app-config';
 
 export const MainScreen = () => {
   const {styles} = useContext(UIThemeContext);

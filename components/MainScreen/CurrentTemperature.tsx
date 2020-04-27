@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {View, Text} from 'react-native';
-import {UIThemeContext} from '../contexts/ui-theme-context';
+import {UIThemeContext} from '../../contexts/ui-theme-context';
 
 type CurrentTemperatureProps = {
   temperature: string;

@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import {MainScreen} from './components/MainScreen';
+import {MainScreen} from './components/MainScreen/MainScreen';
 
 const App = () => {
   return <MainScreen />;
