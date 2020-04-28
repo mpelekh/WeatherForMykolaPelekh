@@ -129,7 +129,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
+    flex: 1,
   },
   mapSaveButton: {
     backgroundColor: COLORS.blue,
