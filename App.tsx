@@ -12,9 +12,10 @@ import React from 'react';
 import {MainScreen} from './components/MainScreen/MainScreen';
 import {CitiesList} from './components/CitiesList/CitiesList';
 import {Map} from './components/Map/Map';
+import {Carousel} from './components/Carousel';
 
 const App = () => {
-  return <Map />;
+  return <Carousel />;
 };
 
 export default App;

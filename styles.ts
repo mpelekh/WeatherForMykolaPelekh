@@ -144,4 +144,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 15,
   },
+  carousel: {
+    flex: 1,
+  },
 });
