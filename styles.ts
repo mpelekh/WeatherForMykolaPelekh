@@ -8,6 +8,10 @@ const COLORS = {
 };
 
 export const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: COLORS.lightAzure,
+  },
   safeAreaViewTop: {
     flex: 0,
     backgroundColor: COLORS.lightAzure,
@@ -42,8 +46,7 @@ export const styles = StyleSheet.create({
   section: {
     alignItems: 'baseline',
     flexDirection: 'row',
-    paddingLeft: 25,
-    paddingRight: 25,
+    paddingHorizontal: 25,
   },
   cityNameText: {
     color: COLORS.white,
@@ -107,5 +110,21 @@ export const styles = StyleSheet.create({
   nextDayForecastDateText: {
     color: COLORS.white,
     fontSize: 14,
+  },
+
+  cityView: {
+    backgroundColor: COLORS.lighterAzure,
+    borderRadius: 5,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    paddingVertical: 15,
+  },
+  cityWeatherStatusView: {
+    marginLeft: 'auto',
+  },
+  cityWeatherStatusViewText: {
+    color: COLORS.white,
+    fontSize: 32,
+    fontWeight: '500',
   },
 });

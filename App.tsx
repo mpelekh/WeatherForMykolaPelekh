@@ -10,9 +10,10 @@
 
 import React from 'react';
 import {MainScreen} from './components/MainScreen/MainScreen';
+import {CitiesList} from './components/CitiesList/CitiesList';
 
 const App = () => {
-  return <MainScreen />;
+  return <CitiesList />;
 };
 
 export default App;
