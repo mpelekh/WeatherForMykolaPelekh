@@ -1,8 +1,9 @@
-import React, {useContext, useState} from 'react';
-import {StatusBar, TouchableOpacity} from 'react-native';
+import React, {useContext, useState, useCallback} from 'react';
+import {StatusBar, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import {UIThemeContext} from '../../contexts/ui-theme-context';
 import MapView, {Marker} from 'react-native-maps';
+import {UIThemeContext} from '../../contexts/ui-theme-context';
+import {addItem, getItem} from '../../services/async-storage-service';
 
 interface IGeolocation {
   latitude: number;
@@ -15,6 +16,29 @@ export const Map = () => {
     latitude: 37.78825,
     longitude: -122.4324,
   });
+  const addCity = useCallback(async () => {
+    const item = await getItem('@locationsList');
+    if (!item) {
+      return addItem('@locationsList', location);
+    }
+
+    const locationsList = JSON.parse(item);
+    const isLocationExists = locationsList.find(
+      ({latitude, longitude}: IGeolocation) =>
+        location.latitude === latitude && location.longitude === longitude,
+    );
+
+    if (isLocationExists) {
+      Alert.alert(
+        'Error',
+        'Such location already exists in the saved locations list.',
+        [{text: 'OK'}],
+        {cancelable: false},
+      );
+    } else {
+      return addItem('@locationsList', location);
+    }
+  }, [location]);
 
   return (
     <>
@@ -48,7 +72,7 @@ export const Map = () => {
           description="this is a marker example"
         />
       </MapView>
-      <TouchableOpacity style={styles.mapSaveButton}>
+      <TouchableOpacity style={styles.mapSaveButton} onPress={addCity}>
         <Icon style={styles.mapSaveButtonIcon} name="save" />
       </TouchableOpacity>
     </>
