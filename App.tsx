@@ -11,9 +11,10 @@
 import React from 'react';
 import {MainScreen} from './components/MainScreen/MainScreen';
 import {CitiesList} from './components/CitiesList/CitiesList';
+import {Map} from './components/Map/Map';
 
 const App = () => {
-  return <CitiesList />;
+  return <Map />;
 };
 
 export default App;

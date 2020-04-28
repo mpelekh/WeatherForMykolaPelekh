@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const COLORS = {
+  azure: '#209ce2',
   lightAzure: '#22b7f3',
   lighterAzure: '#60c1f3',
-  azure: '#209ce2',
+  blue: '#1c4276',
   white: '#ffffff',
 };
 
@@ -126,5 +127,21 @@ export const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 32,
     fontWeight: '500',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  mapSaveButton: {
+    backgroundColor: COLORS.blue,
+    borderRadius: 50,
+    bottom: 50,
+    position: 'absolute',
+    right: 10,
+  },
+  mapSaveButtonIcon: {
+    color: COLORS.white,
+    fontSize: 24,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
   },
 });
