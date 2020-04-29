@@ -1,11 +1,22 @@
-import React, {useContext} from 'react';
-import {SafeAreaView, StatusBar, FlatList} from 'react-native';
+import React, {useContext, useCallback} from 'react';
+import {
+  SafeAreaView,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Fontisto';
 import {UIThemeContext} from '../../contexts/ui-theme-context';
 import {CityWeatherInfo} from './CityWeatherInfo';
 import config from '../../config/app-config';
 
 export const CitiesList = () => {
   const {styles} = useContext(UIThemeContext);
+  const navigation = useNavigation();
+  const onAddLocationClick = useCallback(() => {
+    navigation.navigate('Map');
+  }, [navigation]);
 
   return (
     <>
@@ -26,6 +37,11 @@ export const CitiesList = () => {
           )}
           keyExtractor={(item) => item.toString()}
         />
+        <TouchableOpacity
+          style={styles.topRightButton}
+          onPress={onAddLocationClick}>
+          <Icon style={styles.topRightButtonIcon} name="plus-a" />
+        </TouchableOpacity>
       </SafeAreaView>
     </>
   );

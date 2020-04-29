@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext, useCallback} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
+import {useNavigation} from '@react-navigation/native';
 import {UIThemeContext} from '../../contexts/ui-theme-context';
 
 type CityAndDayInfoProps = {
@@ -10,6 +11,10 @@ type CityAndDayInfoProps = {
 
 export const CityAndDayInfo = ({city, day}: CityAndDayInfoProps) => {
   const {styles} = useContext(UIThemeContext);
+  const navigation = useNavigation();
+  const onNavigationIconClick = useCallback(() => {
+    navigation.navigate('CitiesList');
+  }, [navigation]);
 
   return (
     <View style={styles.mainSectionCityAndDayInfo}>
@@ -18,7 +23,9 @@ export const CityAndDayInfo = ({city, day}: CityAndDayInfoProps) => {
           <Text style={styles.cityNameText}>{city}</Text>
         </View>
         <View style={styles.cityNameIconPosition}>
-          <Icon style={styles.cityNameIconText} name="nav-icon-list-a" />
+          <TouchableOpacity onPress={onNavigationIconClick}>
+            <Icon style={styles.cityNameIconText} name="nav-icon-list-a" />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.section}>

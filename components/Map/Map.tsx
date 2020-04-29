@@ -2,8 +2,9 @@ import React, {useContext, useState, useCallback} from 'react';
 import {StatusBar, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import MapView, {Marker} from 'react-native-maps';
+import {ItemExistsException} from '../../exceptions/item-exists-error';
 import {UIThemeContext} from '../../contexts/ui-theme-context';
-import {addItem, getItem} from '../../services/async-storage-service';
+import {addUniqItem} from '../../services/async-storage-service';
 
 interface IGeolocation {
   latitude: number;
@@ -17,26 +18,31 @@ export const Map = () => {
     longitude: -122.4324,
   });
   const addCity = useCallback(async () => {
-    const item = await getItem('@locationsList');
-    if (!item) {
-      return addItem('@locationsList', location);
-    }
+    try {
+      await addUniqItem(
+        '@locationsList',
+        location,
+        ({latitude, longitude}: IGeolocation) =>
+          location.latitude === latitude && location.longitude === longitude,
+      );
 
-    const locationsList = JSON.parse(item);
-    const isLocationExists = locationsList.find(
-      ({latitude, longitude}: IGeolocation) =>
-        location.latitude === latitude && location.longitude === longitude,
-    );
-
-    if (isLocationExists) {
       Alert.alert(
-        'Error',
-        'Such location already exists in the saved locations list.',
+        'Success',
+        'The location has been added to the saved locations list.',
         [{text: 'OK'}],
         {cancelable: false},
       );
-    } else {
-      return addItem('@locationsList', location);
+    } catch (error) {
+      if (error instanceof ItemExistsException) {
+        Alert.alert(
+          'Error',
+          'Such location already exists in the saved locations list.',
+          [{text: 'OK'}],
+          {cancelable: false},
+        );
+      } else {
+        throw error;
+      }
     }
   }, [location]);
 
@@ -72,8 +78,8 @@ export const Map = () => {
           description="this is a marker example"
         />
       </MapView>
-      <TouchableOpacity style={styles.mapSaveButton} onPress={addCity}>
-        <Icon style={styles.mapSaveButtonIcon} name="save" />
+      <TouchableOpacity style={styles.topRightButton} onPress={addCity}>
+        <Icon style={styles.topRightButtonIcon} name="save" />
       </TouchableOpacity>
     </>
   );

@@ -131,14 +131,14 @@ export const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-  mapSaveButton: {
+  topRightButton: {
     backgroundColor: COLORS.blue,
     borderRadius: 50,
     bottom: 50,
     position: 'absolute',
     right: 10,
   },
-  mapSaveButtonIcon: {
+  topRightButtonIcon: {
     color: COLORS.white,
     fontSize: 24,
     paddingHorizontal: 15,
