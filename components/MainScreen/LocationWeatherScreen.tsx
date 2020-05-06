@@ -5,9 +5,18 @@ import {UIThemeContext} from '../../contexts/ui-theme-context';
 import {CityAndDayInfo} from './CityAndDayInfo';
 import {CurrentWeatherInfo} from './CurrentWeatherInfo';
 import {NextDayWeather} from './NextDayWeather';
-import {fetchWeather} from '../../services/weather-service';
-import ICONS, {DEFAULT_ICON} from '../../utils/icons';
+import {
+  fetchCurrentWeather,
+  fetchWeatherForecast,
+} from '../../services/weather-service';
+import ICONS from '../../utils/icons';
 import config from '../../config/app-config';
+
+type WeatherForecast = {
+  date: string;
+  day: string;
+  iconName: string;
+};
 
 type WeatherScreenProps = {
   latitude: number;
@@ -23,19 +32,52 @@ export const LocationWeatherScreen = ({
   const [temperature, setTemperature] = useState('10');
   const [weatherStatus, setWeatherStatus] = useState('Clear');
   const [weatherDescription, setWeatherDescription] = useState('');
+  const [weatherForecast, setWeatherForecast] = useState<
+    Array<WeatherForecast>
+  >([]);
   const currentDate = moment();
   const day = currentDate.format('dddd');
   const time = currentDate.format('h:mm A');
 
   useEffect(() => {
-    fetchWeather(latitude, longitude).then(
-      ({name, main: {temp}, weather: [{main, description}]}) => {
-        setCity(name);
-        setTemperature(Math.round(temp).toString());
-        setWeatherStatus(main);
-        setWeatherDescription(description);
-      },
+    const fetch = () =>
+      fetchCurrentWeather(latitude, longitude).then(
+        ({name, main: {temp}, weather: [{main, description}]}) => {
+          setCity(name);
+          setTemperature(Math.round(temp).toString());
+          setWeatherStatus(main);
+          setWeatherDescription(description);
+        },
+      );
+    const intervalId = setInterval(
+      fetch,
+      config.FETCH_CURRENT_WEATHER_DATA_INTERVAL_MS,
     );
+
+    fetch();
+
+    return () => clearInterval(intervalId);
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    const fetch = () =>
+      fetchWeatherForecast(latitude, longitude).then((forecastList) => {
+        setWeatherForecast(
+          forecastList.map(({weatherStatus, date}) => ({
+            date: date.format('M/D'),
+            day: date.format('ddd'),
+            iconName: ICONS[weatherStatus].day,
+          })),
+        );
+      });
+    const intervalId = setInterval(
+      fetch,
+      config.FETCH_WEATHER_FORECAST_DATA_INTERVAL_MS,
+    );
+
+    fetch();
+
+    return () => clearInterval(intervalId);
   }, [latitude, longitude]);
 
   return (
@@ -56,20 +98,12 @@ export const LocationWeatherScreen = ({
 
           <View style={styles.nextDaysWeatherSection}>
             <FlatList
-              data={Array.from({length: config.FORECAST_DAYS_NUMBER}).map(
-                (_, index) => {
-                  return currentDate.clone().add(index + 1, 'days');
-                },
-              )}
+              data={weatherForecast}
               horizontal={true}
-              renderItem={({item: date}) => (
-                <NextDayWeather
-                  day={date.format('ddd')}
-                  iconName={DEFAULT_ICON}
-                  date={date.format('M/D')}
-                />
+              renderItem={({item: {date, day, iconName}}) => (
+                <NextDayWeather date={date} day={day} iconName={iconName} />
               )}
-              keyExtractor={(item) => item.toString()}
+              keyExtractor={(item) => item.date}
             />
           </View>
         </View>

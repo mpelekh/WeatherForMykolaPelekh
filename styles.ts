@@ -84,6 +84,7 @@ export const styles = StyleSheet.create({
   },
   weatherView: {
     alignItems: 'center',
+    flex: 0.8,
     marginBottom: -40,
   },
   weatherViewIcon: {
