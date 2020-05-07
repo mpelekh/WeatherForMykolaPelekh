@@ -31,7 +31,7 @@ export const CitiesList = () => {
     const getList = async () => {
       try {
         const list = await getItem('@locationsList');
-        setLocationsList(JSON.parse(list));
+        setLocationsList(JSON.parse(list || '[]'));
       } catch (error) {
         Alert.alert(
           'Error',
